@@ -75,6 +75,12 @@ people2 = {
 #         print(key2, people2[key][key2])
 #     print()
 
+# # coś szybszego, metoda items() działa tylko dla słowników
+# for id, dictionary in people2.items():
+#     print("id:", id)
+#     for key in dictionary:
+#         print(key, dictionary[key])
+
 # krotka w słowniku
 # np. oceny uczniów
 oceny = {
