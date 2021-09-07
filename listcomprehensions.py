@@ -2,11 +2,12 @@
 
 
 # potęgi liczb na dwa sposoby
+# tutaj wypisywanie w pętli
 liczby1 = []
 for i in range(11):
     liczby1.append(i ** 2)
 print(liczby1)
-
+# tutaj wyrażenie listowe
 liczby2 = [i ** 2 for i in range(11)]
 print(liczby2)
 
