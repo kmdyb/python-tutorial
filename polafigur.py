@@ -1,20 +1,20 @@
 # program liczący pola figur
 
-def pole_prostokata(v1, v2):
+def pole_prostokata(a, b):
     # print("a * b =", a * b)
-    return v1 * v2
+    return a * b
 
 
-def pole_trapezu(v1, v2, v3):
-    return (v1 + v2) * v3 / 2
+def pole_trapezu(a, b, h):
+    return (a + b) * h / 2
 
 
-def pole_trojkata(v1, v2):
-    return v1 * v2 / 2
+def pole_trojkata(a, h):
+    return a * h / 2
 
 
-def pole_kwadratu(v1):
-    return v1 * v1
+def pole_kwadratu(a):
+    return a * a
 
 
 while True:
