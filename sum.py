@@ -32,13 +32,18 @@ def finish_timer(starttimer):
     return endtimer - starttimer
 
 
-def function_performance(func, arg):
-    starttimer = time.perf_counter()
-    print(func(arg))
-    endtimer = time.perf_counter()
-    return endtimer - starttimer
+def function_performance(func, arg, f_iterations=1):
+    sumtimer = 0
+    print("Calculated value:", func(arg), "     Time elapsed:", end=' ')
+    for i in range(0, f_iterations):
+        starttimer = time.perf_counter()
+        func(arg)
+        endtimer = time.perf_counter()
+        sumtimer = sumtimer + endtimer - starttimer
+    return sumtimer
 
 
+"""
 start = time.perf_counter()
 print(sumuj_do(111))
 end = time.perf_counter()
@@ -53,5 +58,13 @@ print(sumuj_do3(111))
 print(finish_timer(start))
 
 print(function_performance(sumuj_do4, 111))
+"""
+tested_value = 111
+iterations = 1
+print(function_performance(sumuj_do, tested_value, iterations))
+print(function_performance(sumuj_do2, tested_value, iterations))
+print(function_performance(sumuj_do3, tested_value, iterations))
+print(function_performance(sumuj_do4, tested_value, iterations))
+print(function_performance(sumuj_do5, tested_value, iterations))
 
-print(function_performance(sumuj_do5, 111))
+# dodać argument domyślny decydujący o liczbie powtórzeń function_performance
