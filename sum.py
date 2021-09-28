@@ -66,5 +66,3 @@ print(function_performance(sumuj_do2, tested_value, iterations))
 print(function_performance(sumuj_do3, tested_value, iterations))
 print(function_performance(sumuj_do4, tested_value, iterations))
 print(function_performance(sumuj_do5, tested_value, iterations))
-
-# dodać argument domyślny decydujący o liczbie powtórzeń function_performance
