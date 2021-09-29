@@ -30,6 +30,8 @@ print(id(listSample), "---", id(listSample2))
 # obiekty niezmienne (immutable): bool, int, float, tuple, str ...
 a = 4
 b = a
+print("a:", a, " --- b:", b)
+print(id(a), "---", id(b))
 b = 7
 print("a:", a, " --- b:", b)
 print(id(a), "---", id(b))
