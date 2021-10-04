@@ -1,48 +1,44 @@
-def listfunction(somelist):
-    print("infunc before        ", id(somelist), somelist)
-    somelist.append(666)
-    somelist[0] = 10
-    print("infunc after         ", id(somelist), somelist)
+import copy
 
 
 def listfunction2(somelist):
-    print("infunc before                    ", id(somelist), somelist)
-    print("infunc before, list2[0]          ", id(list2[0]), list2[0])
-    print("infunc before, list2[0][0]       ", id(list2[0][0]), list2[0][0])
-    somelist.append(666)
-    somelist[0][0] = 100
-    print("infunc after                     ", id(somelist), somelist)
-    print("infunc after, list2[0]           ", id(list2[0]), list2[0])
-    print("infunc after, list2[0][0]        ", id(list2[0][0]), list2[0][0])
+    print("infunc before elements  ", somelist, somelist[0], somelist[0][0], sep='      ')
+    print("infunc before ids        ", id(somelist), id(somelist[0]), id(somelist[0][0]), sep='     ')
+    somelist[0][0] = 2
+    print("infunc after ids         ", id(somelist), id(somelist[0]), id(somelist[0][0]), sep='     ')
+    print("infunc after elements   ", somelist, somelist[0], somelist[0][0], sep='      ')
 
 
-list1 = [1, 5, 7, 34]
 list2 = [[1, 3], [5, 3], [7, 2]]
-
-print("using listfunction(list1[:])")
-print("outer before         ", id(list1), list1)
-listfunction(list1[:])      # creates a copy to work on, event though a list is mutable
-print("outer after          ", id(list1), list1, "\n")
-
-print("using listfunction(list1)")
-print("outer before         ", id(list1), list1)
-listfunction(list1)         # uses a mutable list object
-print("outer after          ", id(list1), list1, "\n")
-
 print("using listfunction2(list2[:])")
-print("outer before list2               ", id(list2), list2)
-print("outer before list2[0]            ", id(list2[0]), list2[0])
-print("outer before list2[0][0]         ", id(list2[0][0]), list2[0][0])
+print("outer before elements   ", list2, list2[0], list2[0][0], sep='      ')
+print("outer before ids         ", id(list2), id(list2[0]), id(list2[0][0]), sep='     ')
 listfunction2(list2[:])      # creates a copy to work on, event though a list is mutable
-print("outer after list2                ", id(list2), list2)
-print("outer after list2[0]             ", id(list2[0]), list2[0])
-print("outer after list2[0][0]          ", id(list2[0][0]), list2[0][0], "\n")
+print("outer after elements    ", list2, list2[0], list2[0][0], sep='      ')
+print("outer after ids          ", id(list2), id(list2[0]), id(list2[0][0]), "\n", sep='     ')
 
+list2 = [[1, 3], [5, 3], [7, 2]]
 print("using listfunction2(list2)")
-print("outer before, list2              ", id(list2), list2)
-print("outer before, list2[0]           ", id(list2[0]), list2[0])
-print("outer before, list2[0][0]        ", id(list2[0][0]), list2[0][0])
+print("outer before elements   ", list2, list2[0], list2[0][0], sep='      ')
+print("outer before ids         ", id(list2), id(list2[0]), id(list2[0][0]), sep='     ')
 listfunction2(list2)         # uses a mutable list object
-print("outer after, list2               ", id(list2), list2)
-print("outer after, list2[0]            ", id(list2[0]), list2[0])
-print("outer after, list2[0][0]         ", id(list2[0][0]), list2[0][0])
+print("outer after elements    ", list2, list2[0], list2[0][0], sep='      ')
+print("outer after ids          ", id(list2), id(list2[0]), id(list2[0][0]), "\n", sep='     ')
+
+
+list2 = [[1, 3], [5, 3], [7, 2]]
+print("using listfunction2(list2.copy())")
+print("outer before elements   ", list2, list2[0], list2[0][0], sep='      ')
+print("outer before ids         ", id(list2), id(list2[0]), id(list2[0][0]), sep='     ')
+listfunction2(list2.copy())         # płytkie kopiowanie
+print("outer after elements    ", list2, list2[0], list2[0][0], sep='      ')
+print("outer after ids          ", id(list2), id(list2[0]), id(list2[0][0]), "\n", sep='     ')
+
+
+list2 = [[1, 3], [5, 3], [7, 2]]
+print("using listfunction2(copy.deepcopy(list2))")
+print("outer before elements   ", list2, list2[0], list2[0][0], sep='      ')
+print("outer before ids         ", id(list2), id(list2[0]), id(list2[0][0]), sep='     ')
+listfunction2(copy.deepcopy(list2))     # głębokie kopiowanie
+print("outer after elements    ", list2, list2[0], list2[0][0], sep='      ')
+print("outer after ids          ", id(list2), id(list2[0]), id(list2[0][0]), sep='     ')
