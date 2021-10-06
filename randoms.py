@@ -25,4 +25,13 @@ while x < 10:
     list2.append(randomfunc())
     x = x + 1
 print(list2)
-print(Counter(list2))
+print(Counter(list2), "\n")
+
+# ---------
+
+listaimion = ["ana", "bob", "gunther", "max", "joe"]
+
+print((random.choice(listaimion)))
+
+print((random.choices(listaimion, k=10)))
+print(Counter(random.choices(listaimion, [1, 1, 1, 1, 10], k=1000)))
