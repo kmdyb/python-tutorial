@@ -1,39 +1,52 @@
-#   --------------- operacje na pliku
-plik = open("data", "w")  # handle
-plik.write("test data1")
-plik.write("test data2")
-plik.close()
-#   --------------- konstrukcja try ... finally
+"""#   --------------- operacje na pliku
+file1 = open("data", "w")  # handle
+file1.write("test data1")
+file1.write("test data2")
+file1.close()
+"""
+
+"""#   --------------- konstrukcja try ... finally
 try:
     print("test try before")
-#    print(0/0)     # optional comment
+#    print(0/0)
     print("test try after")
 finally:
     print("finally text")
-#   --------------- konstrukcja with ... as
-with open("data2", "w") as pliczek2:    # handle
-    pliczek2.write("test with as before ")
-#    print(0 / 0)   # optional comment
-    pliczek2.write("test with as after")
-# pliczek2.write("test with as out of scope")       # optional comment
+"""
+
+"""#   --------------- konstrukcja with ... as
+with open("data2", "w") as file2:    # handle
+    file2.write("test with as before ")
+#    print(0 / 0)
+    file2.write("test with as after")
+# file2.write("test with as out of scope")       # won't work as the file's been closed
+"""
 
 #   --------------- .read()
 with open("data3", "r", encoding="UTF-8") as file3:
-    fromfile = file3.read()
-    print("from file\n", fromfile)
-    print("2nd from file\n", fromfile)
+    print("printing file3.read():")
     print(file3.read())
-# można użyć .read() tylko raz?
-    print(fromfile.splitlines())
-# poniższe .readline() też nie zadziała, bo już była użyta metoda .read()
-    linia1 = file3.readline()
-    linia2 = file3.readline()
-    linia3 = file3.readline()
-    print(linia1, linia2, linia3)
-# poniższe readlines() odczyta linie i wrzuci je w listę (wraz z \n)
-    file3.readlines()
-# żeby nie było znaków nowej linii \n najlepiej wykorzystać poniższe
-    file3.read().splitlines()
-# można też tak, ale to i tak nie będzie wykonane, bo plik był odczytany
+
+    file3.seek(0)
+    fromfile = file3.read()
+    print("\nprinting object created from file3.read():\n", fromfile)
+
+    file3.seek(0)
+    print("\nprinting file3.readlines(): ", file3.readlines())
+
+    print("printing fromfile.splitlines():", fromfile.splitlines())
+
+    file3.seek(0)
+    print("printing file3.read().splitlines() after file3.seek(0) of course:", file3.read().splitlines())
+
+    file3.seek(0)
+    print()
+    print(linia1 := file3.readline(), file3.tell())
+    print(linia2 := file3.readline(), file3.tell())
+    print(linia3 := file3.readline(), file3.tell())
+    print(linia1, linia2, linia3, sep='')
+
+    file3.seek(0)
     for line in file3:
-        print(line)
+        print(line, end='')
+    print()
