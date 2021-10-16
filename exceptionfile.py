@@ -7,4 +7,5 @@ def fileread(filename):
         print("File does not exist, can't read it.")
 
 
-print(fileread("data"))
+wantedFile = input("Podaj nazwę pliku: ")
+print("Content:\n", fileread(wantedFile), sep="")
