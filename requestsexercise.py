@@ -10,8 +10,7 @@ with open("siterequest.txt", "w", encoding="UTF-8") as file:
     file.write(siteaddress)
     file.write(response.text)
 
-# filtrowanie stron ---- kod działa tylko przy poprawnych stronach... do poprawy
-strony = [siteaddress, "http://www.google.pl", "http://www.pap.pl", "http://www.pap.gov.pl"]
+strony = [siteaddress, "http://www.google.pl", "http://www.pap.pl", "http://www.pap.gov.pl", "http://www.wp.pl"]
 stronyok = []
 for element in strony:
     try:
