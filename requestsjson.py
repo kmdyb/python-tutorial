@@ -13,14 +13,6 @@ def count_completed_tasks(alltasks):
     return completedtasksinner
 
 
-"""def get_keys_with_top_values(my_dict):
-    return [
-        key
-        for (key, value) in my_dict.items()
-        if value == max(my_dict.values())
-    ]"""
-
-
 def users_with_top_completed_tasks(completedtasksinner):
     topusersinner = []
     maxcompletedtasks = max(completedtasksinner.values())
@@ -28,6 +20,14 @@ def users_with_top_completed_tasks(completedtasksinner):
         if numberOfCompletedTask == maxcompletedtasks:
             topusersinner.append(userId)
     return topusersinner
+
+
+"""def get_keys_with_top_values(my_dict):
+    return [
+        key
+        for (key, value) in my_dict.items()
+        if value == max(my_dict.values())
+    ]"""
 
 
 response = requests.get("https://jsonplaceholder.typicode.com/todos")
@@ -38,6 +38,7 @@ except json.decoder.JSONDecodeError:
 else:
     completedtasks = count_completed_tasks(tasks)
     topusers = users_with_top_completed_tasks(completedtasks)
+
 """
 # sposób 1
 response = requests.get("https://jsonplaceholder.typicode.com/users")
@@ -57,9 +58,10 @@ for userID in topusers:
     print(user)
     print(userID)
 """
+# sposób 3
 
 
-def change_list_into_conj__of_param(my_list, key="id"):
+def change_list_into_conj_of_param(my_list, key="id"):
     f_conj_param = key + "="
     last = len(my_list)
     i = 0
@@ -72,9 +74,7 @@ def change_list_into_conj__of_param(my_list, key="id"):
     return f_conj_param
 
 
-# sposób 3
-# conj_param = change_list_into_conj__of_param(topusers, "id")
-conj_param = change_list_into_conj__of_param([1, 3, 6])
+conj_param = change_list_into_conj_of_param(topusers)
 response = requests.get("https://jsonplaceholder.typicode.com/users/", params=conj_param)
 users = response.json()
 for user in users:
