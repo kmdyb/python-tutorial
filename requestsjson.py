@@ -1,15 +1,13 @@
 import requests
 import json
+from collections import defaultdict
 
 
 def count_completed_tasks(alltasks):
-    completedtasksinner = dict()
+    completedtasksinner = defaultdict(int)
     for entry in alltasks:
         if entry["completed"]:
-            try:
-                completedtasksinner[entry["userId"]] += 1
-            except KeyError:
-                completedtasksinner[entry["userId"]] = 1
+            completedtasksinner[entry["userId"]] += 1
     return completedtasksinner
 
 
