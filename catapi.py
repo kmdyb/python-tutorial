@@ -51,13 +51,27 @@ def picture_in_browser(link):
         print("Ok, idziemy dalej.")
 
 
-userId = "agh2m"
+userId = "Kiwi"
 favouriteCats = get_favourite_cats(userId)
 print("Zalogowano jako ", userId, ". Twoje ulubione koty to:", sep='')
 for favCat in favouriteCats:
     print(favCat["id"], favCat["image"]["url"])
 
-removeFavouriteCat = input("\nCzy chcesz usunąć kota z ulubionych? T/N ")
+cats = {
+    cat["id"]: cat["image"]["url"]
+    for cat in favouriteCats
+}
+
+see_cat = input("Czy chcesz zobaczyć któregoś z nich? T/N ")
+if see_cat.upper() == "T":
+    see_cat_id = int(input("Podaj jego id: "))
+    link = cats[see_cat_id]
+    picture_in_browser(link)
+
+else:
+    print("Ok, idziemy dalej.")
+
+removeFavouriteCat = input("\nCzy chcesz któregoś kota usunąć z ulubionych? T/N ")
 if removeFavouriteCat.upper() == "T":
     favourite_cat_to_remove = input("Który to będzie kot? Podaj jego id: ")
     remove_favourite_cat(favourite_cat_to_remove)
