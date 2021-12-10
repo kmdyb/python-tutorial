@@ -13,9 +13,9 @@ def get_json_content_from_response(response):
         return content
 
 
-def get_favourite_cats(userId):
+def get_favourite_cats(user_id):
     params = {
-        "sub_id": userId
+        "sub_id": user_id
     }
     r = requests.get('https://api.thecatapi.com/v1/favourites/', params, headers=credentials.headers)
 
@@ -27,18 +27,18 @@ def get_random_cat():
     return get_json_content_from_response(r)
 
 
-def add_favourite_cat(catId, userId):
-    catData = {
-        "image_id": catId,
-        "sub_id": userId
+def add_favourite_cat(cat_id, user_id):
+    cat_data = {
+        "image_id": cat_id,
+        "sub_id": user_id
     }
-    r = requests.post('https://api.thecatapi.com/v1/favourites/', json=catData, headers=credentials.headers)
+    r = requests.post('https://api.thecatapi.com/v1/favourites/', json=cat_data, headers=credentials.headers)
 
     return get_json_content_from_response(r)
 
 
-def remove_favourite_cat(userId, favouriteCatToRemove):
-    r = requests.delete('https://api.thecatapi.com/v1/favourites/'+favouriteCatToRemove, headers=credentials.headers)
+def remove_favourite_cat(cat_to_remove):
+    r = requests.delete('https://api.thecatapi.com/v1/favourites/'+cat_to_remove, headers=credentials.headers)
 
     return get_json_content_from_response(r)
 
@@ -59,8 +59,8 @@ for favCat in favouriteCats:
 
 removeFavouriteCat = input("\nCzy chcesz usunąć kota z ulubionych? T/N ")
 if removeFavouriteCat.upper() == "T":
-    favouriteCatToRemove = input("Który to będzie kot? Podaj jego id: ")
-    remove_favourite_cat(userId, favouriteCatToRemove)
+    favourite_cat_to_remove = input("Który to będzie kot? Podaj jego id: ")
+    remove_favourite_cat(favourite_cat_to_remove)
     print("Kotek posmutniał.")
 else:
     print("Kotki się cieszą.")
