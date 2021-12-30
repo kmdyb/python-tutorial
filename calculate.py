@@ -2,20 +2,20 @@
 
 a = int(input("Podaj pierwszą liczbę: "))
 b = int(input("Podaj drugą liczbę: "))
-wybor = input("Chcesz przeprowadzić: +, -, /, *, **, modulo: ")
+choice = input("Chcesz przeprowadzić: +, -, /, *, **, modulo: ")
 
-if wybor == '+':
+if choice == '+':
     print("Wynik dodawania a + b to", a + b)
-elif wybor == '-':
+elif choice == '-':
     print("Wynik odejmowania a - b to", a - b)
-elif wybor == '/':
+elif choice == '/':
     if b:
         print("Wynik dzielenia a / b to", a / b)
     else:
         print("Nie dziel przez zero!")
-elif wybor == '*':
+elif choice == '*':
     print("Wynik mnożenia a * b to", a * b)
-elif wybor == '**':
+elif choice == '**':
     print("Wynik potęgowania a ** b to", a ** b)
-elif wybor == 'modulo':
+elif choice == 'modulo':
     print("Wynik a modulo b to", a % b)

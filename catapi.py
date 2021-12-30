@@ -1,7 +1,7 @@
 import requests
 import json
 import webbrowser
-import credentials
+import credentials      # header authentication
 
 
 def get_json_content_from_response(response):
