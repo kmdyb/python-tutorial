@@ -1,22 +1,15 @@
 from random import randint
-
-
-class User:
-    privileges = []
-
-    def __init__(self, name):   # metoda dunder "Double underscore"
-        print("user created")
-
-        self.name = name
+from math import sqrt
 
 
 class Rocket:
     """
     Rocket can fly upwards. Range is dependend on fuel.
     """
-    def __init__(self, fuel=0):
+    def __init__(self, fuel=0, x=0, y=0):
         self.fuel = fuel
-        self.pos_y = 0
+        self.pos_y = y
+        self.pos_x = x
         print("Rocket has been prepared.", self.fuel, "kg of fuel in tank.")
 
     def __str__(self):
@@ -26,13 +19,18 @@ class Rocket:
         """
         Start of a rocket.
         """
-        print("A rocket has been launched.")
+        print("A rocket has started.")
         while self.fuel:
             self.pos_y += 1
             self.fuel -= 1
 
     def status(self):
         print("Rocket's status: fuel ", self.fuel, ", position ", self.pos_y, sep='')
+
+    def get_distance(self, rocket):
+        ab = rocket.pos_y - self.pos_y
+        bc = rocket.pos_x - self.pos_x
+        return sqrt(ab**2 + bc**2)
 
 
 class RocketBoard:
@@ -43,3 +41,9 @@ class RocketBoard:
 
         for rocket in range(number_of_rockets):
             self.rockets[rocket].status()
+
+    def __getitem__(self, key):
+        return self.rockets[key]
+
+    def __setitem__(self, key, value):
+        self.rockets[key].fuel = value
