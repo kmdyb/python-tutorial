@@ -6,7 +6,7 @@ class Rocket:
     """
     Rocket can fly upwards. Range is dependend on fuel.
     """
-    def __init__(self, fuel=0, x=0, y=0):
+    def __init__(self, fuel: float = 0, x: float = 0, y: float = 0):
         self.fuel = fuel
         self.pos_y = y
         self.pos_x = x
@@ -27,11 +27,6 @@ class Rocket:
     def status(self):
         print("Rocket's status: fuel ", self.fuel, ", position ", self.pos_y, sep='')
 
-    def get_distance(self, rocket):
-        ab = rocket.pos_y - self.pos_y
-        bc = rocket.pos_x - self.pos_x
-        return sqrt(ab**2 + bc**2)
-
 
 class RocketBoard:
     def __init__(self, number_of_rockets=2):
@@ -47,3 +42,15 @@ class RocketBoard:
 
     def __setitem__(self, key, value):
         self.rockets[key].fuel = value
+
+    @staticmethod
+    def get_distance(obj1: Rocket, obj2: Rocket) -> float:
+        ab = obj1.pos_y - obj2.pos_y
+        bc = obj1.pos_x - obj2.pos_x
+        return sqrt(ab**2 + bc**2)
+
+    def get_amount_of_rockets(self):
+        return len(self.rockets)
+
+    def __len__(self):
+        return self.get_amount_of_rockets()

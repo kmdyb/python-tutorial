@@ -15,7 +15,9 @@ print(board[0])
 board[0].start()
 print(board[0])
 
-print("\nDystans między rakietami 2 i 3: ", board[1].get_distance(board[2]))
+print("\nDystans między rakietami 2 i 3: ", board.get_distance(board[1], board[2]))
 print("Przesuwam rakietę drugą w bok o trzy jednostki")
 board[1].pos_x = 3
-print("\nDystans między rakietami 2 i 3: ", board[1].get_distance(board[2]))
+print("Dystans między rakietami 2 i 3: ", board.get_distance(board[1], board[2]))
+
+print("Wielkość tablicy z rakietami:", len(board))
