@@ -2,4 +2,4 @@
 
 annoyingly trivial and chaotic
 
-repo created by following a tutorial
+repo created by following some udemy tutorial
